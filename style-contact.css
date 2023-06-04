@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500&family=Sanchez&family=Varela+Round&display=swap');
+
+/* font-family: 'Poppins', sans-serif;
+font-family: 'Sanchez', serif;
+font-family: 'Varela Round', sans-serif; 
+*/
+
+html, body{
+    width: 100%;
+    font-size: calc(.75rem + 1.5vw)
+  }
+
+  
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+.contact-section{
+  margin-top: 30vh;
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bouton-mail{
+    background-color: red;
+    width: 60%;
+    background: linear-gradient(90deg, rgba(127, 127, 213, 0.82) -11.71%, rgba(134, 168, 231, 0.42) 48.4%, rgba(120, 202, 196, 0.06) 106.06%);
+    border-radius: 155px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: .8rem;
+    font-weight: 500;
+    padding: 20px 40px;
+    border: 2px solid #ACB2E7;
+  }
+
+#mail-toukoum{
+    background: linear-gradient(90deg, #000000 39.45%, rgba(0, 0, 0, 0.15) 106.69%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+
+  .bouton-mail:last-child{
+    color: #8087E4;
+  }
+
+  #mail-wrapper{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .link-grid{
+    margin-top: 10vh;
+    display: grid;
+    grid-template-columns: 40%  repeat(3, 20%);
+    grid-template-rows: repeat(2, 1fr);
+    width: 80%;
+    height: 20vh;
+    font-family: 'Poppins', sans-serif ;
+  }
+
+  .link-grid > a{
+    font-size: 1rem;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    padding-left: 20%;
+    align-self: center;
+  }
+
+  .link-grid > p{
+    font-size: .7rem;
+    color: #8C8C8C;
+    font-weight: 500;
+    align-self: center;
+  }
+
+  .link-grid p a {
+    color: #8C8C8C;
+    font-weight: 500;
+
+  }
+
+  #study{
+    grid-row: 2;
+  }
+
+
+  @media (max-width: 1000px) {
+
+    .title-section-wrapper{
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .title-section{
+      margin-bottom: 30px;
+      align-self: flex-start;
+    }
+
+
+    .bouton-mail{
+      width: 100%;
+    }
+
+    .link-grid{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .link-grid a, .link-grid p{
+      margin-bottom: 50px;
+    }
+
+    .link-grid a{
+      padding: 0;
+    }
+
+    .link-grid :nth-child(1){
+      order: 2;
+    }
+    .link-grid :nth-child(2){
+      order: 4;
+    }
+    .link-grid :nth-child(3){
+      order: 3;
+    }
+    .link-grid :nth-child(4){
+      order: 5;
+    }
+    .link-grid :nth-child(5){
+      order: 1;
+    }
+    .link-grid :nth-child(6){
+      order: 7;
+    }
+    .link-grid :nth-child(7){
+      order: 8;
+    }
+    .link-grid :nth-child(8){
+      order:6 ;
+    }
+
+    .contact-section{
+      height: 100vh;
+    }
+
+
+
+  }

@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500&family=Sanchez&family=Varela+Round&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html{
+    scroll-behavior: smooth;
+    transition-timing-function: cubic-bezier(0.54, 0.11, 0.15, 0.71);
+  }
+
+  html, body{
+    width: 100%;
+    font-size: calc(.75rem + 1.5vw)
+  }
+  header{
+    
+    z-index: 3;
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    height: 13%;
+    width: 100%;
+    background: none;
+  }
+
+  .logo{
+    grid-column: 2;
+    display: flex;
+    font-family: 'Varela Round', sans-serif;
+    align-items: end;
+    font-size: 1rem;
+    padding-bottom: 18px;
+  }
+
+.nav-bar{
+   grid-column: 7;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: end;
+   justify-content :center;
+   width: 100%;
+   font-weight: 500;
+   position: relative;
+}
+
+.wrapper-link{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-size: .55rem;
+    background: transparent;
+    z-index: 5;
+    padding: 12px 0px;
+
+    
+}
+
+nav {
+    background-color: black;
+    border-radius: 61.2px ;
+    display: flex; 
+    height: 2rem;
+    max-width: 40vw;
+    display: flex;
+    width: 40vw;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    align-items: center;
+    width: 100%;
+    padding: 0 33px;
+    height: 100%;
+
+}
+
+nav ul li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    
+}
+
+nav ul li.active-li::before,
+nav ul li:hover::before {
+  content:' ';
+  background-color: white;
+  border-radius: 50px;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  transition:  1s ease;
+  padding: 0 20px;
+}
+
+
+
+
+nav ul li.active-li a,
+nav ul li:hover a{
+    color: black;
+  }
+
+
+
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 12px;
+    height: 20px;
+    background-color: #ffffff;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #858585;
+    border-radius: 10px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #afafaf;
+  }
+  
+
+  /* poru le responsive */
+
+  .hamburger{
+    display: none;
+  }
+
+  header .hamburger-black{
+    height: 2.5rem;
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+  }
+
+  @media (max-width: 1000px) {
+    header {
+      display: flex;
+      align-items: center;
+    }
+
+    
+
+    .mobile-logo{
+      display: block;
+      left: 50px;
+      position: absolute;
+      color: white;
+      z-index: 1000;
+    }
+
+    .logo{
+      top: 20px;
+      display: block;
+      position: relative;
+      left: 50px;
+      padding: 0;
+    }
+
+
+
+    .nav-bar{
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 78%, rgba(228, 228, 228, 0.1) 100%);
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      height: 100vh;
+      transform: translateY(-100%);
+      transition: all .7s ease;
+    }
+
+    header .mobile-menu{
+      transform: translateY(0%);
+    }
+
+    .nav-bar nav{
+      height: 100%;
+      background-color: transparent;
+    }
+
+    nav ul{
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    nav ul li{
+      margin: 10px;
+    }
+
+    nav ul li a{
+      font-size: 1.5rem;
+    }
+
+    header .hamburger{
+      display: block;
+      position: absolute;
+      height: 2.5rem;
+      top: 50px;
+      right: 50px;
+    }
+
+    header .hamburger-black{
+      display: block;
+    }
+
+
+    
+
+
+    .mobile-hb{
+      visibility: hidden;
+    } 
+
+    body.no-scroll {
+      overflow: hidden; /* Désactive le défilement */
+    }
+    
+
+  }
+
+
+
+  /* progress bar  */
+
+  progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border: none;
+    z-index: 1000000;
+  }
+
+  progress::-webkit-progress-bar {
+    background: transparent;
+  }
+
+  progress::-webkit-progress-value {
+    border-radius: 0% 5px 5px 0%;
+
+    background: -webkit-linear-gradient(to left, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-attachment: fixed ;
+    opacity: .6;
+  }
+
+  progress::-moz-progress-bar {
+    border-radius: 0% 5px 5px 0%;
+
+    background: -webkit-linear-gradient(to left, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-attachment: fixed ;
+  }

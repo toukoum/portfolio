@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500&family=Sanchez&family=Varela+Round&display=swap');
+
+/* font-family: 'Poppins', sans-serif;
+font-family: 'Sanchez', serif;
+font-family: 'Varela Round', sans-serif; 
+*/
+
+html, body{
+    width: 100%;
+    font-size: calc(.75rem + 1.5vw)
+  }
+
+  
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+  .work-section{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+.title-section-wrapper{
+    position: relative;
+    width: 80%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.title-section{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.title-section-wrapper p{
+    font-size: .7rem;
+    font-weight: 500;
+}
+
+
+.section-wrapper{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.section-in-section{
+    height: 9rem;
+    width: 23rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+    box-shadow: 0px 15px 12px rgba(0, 0, 0, 0.67);
+
+}
+
+.section-in-section:last-child{
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    background: linear-gradient(180deg, #F4C4F3 0%, #FC67FA 100%);
+    z-index: 2;
+}
+
+.section-in-section:first-child{
+    background: linear-gradient(360deg, #061700 -11.64%, #0F9B0F 105.37%);
+}
+
+
+
+
+#section-text-2{
+    text-align: end;
+}
+    
+.minia img{
+    transform: translateY(5px);
+    height: 6.5rem;
+    margin-right: 50px;
+    filter: drop-shadow(0px 7px 9px #0C720A);
+
+
+}
+
+
+
+
+
+
+
+
+
+.logo-bde img{
+    transform: translateY(5px);
+    margin-left: 50px;
+    height: 7rem;
+    filter: drop-shadow(0px 7px 9px #d1a2d0);
+}
+
+.section-text h3{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.section-text p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+}
+
+.title-logo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.title-logo img {
+    height: 2rem;
+    transform: translateY(-0.1rem);
+    
+}
+
+
+#link-ytb{
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+    color: black;
+}
+
+#link-ytb img {
+    height: .8rem;
+    margin-left: 5px;
+}
+
+
+
+/* Education section */
+
+
+.education-section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.education-card{
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.card-wrapper {
+    position: relative;
+    padding: 60px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 80px;
+    background: linear-gradient(93.39deg, rgba(18, 194, 233, 0.26) -22.4%, rgba(196, 113, 237, 0.26) 44.52%, rgba(246, 79, 89, 0.26) 107.38%);
+    box-shadow: 0px 7px 9px rgba(0, 0, 0, 0.6);
+  }
+  
+  .card-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 80px;
+    background: linear-gradient(93.39deg, rgba(18, 194, 233, 0.4) -22.4%, rgba(196, 113, 237, 0.4) 44.52%, rgba(246, 79, 89, 0.4) 107.38%);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  
+  .card-wrapper:hover::before {
+    opacity: 1;
+  }
+
+.card-wrapper p{
+    font-size: 0.5rem;
+    font-weight: 500;
+    color: #8C8C8C;
+}
+
+.card-wrapper h3{
+    font-size: 1.3rem;
+    font-weight: 500;
+    transform: translateX(20px);
+}
+
+.card-wrapper h4{
+    font-size: 0.6rem;
+    font-weight: 500;
+    transform: translateX(20px);
+}
+
+.educ-second{
+    margin-top: 6vh;
+}
+
+
+.zoomable-image {
+    cursor: pointer;
+  }
+
+
+.zoomed-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+.zoomed-image img {
+    display: block;
+    height: 50%;
+    margin: 0 auto;
+  }
+
+
+
+  @media (max-width: 1000px) {
+
+    .card-wrapper{
+        width: 85%;
+    }
+
+    .education-card span{
+        display: flex;
+        justify-content: center;
+    }
+
+
+  }

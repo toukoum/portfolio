@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500&family=Sanchez&family=Varela+Round&display=swap');
+
+/* font-family: 'Poppins', sans-serif;
+font-family: 'Sanchez', serif;
+font-family: 'Varela Round', sans-serif; 
+*/
+
+html, body{
+    width: 100%;
+    font-size: calc(.75rem + 1.5vw)
+  }
+
+  
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .second-page{
+    display: flex;
+    height: 90vh;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.description {
+    width: 80%;   
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: justify;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.6rem;
+}
+
+
+#view-cv {
+  position: relative;
+  color: black;
+  text-decoration: none;
+  background-image: linear-gradient(to right, rgba(18, 194, 233, 1) 0%, rgba(196, 113, 237, 1) 50%, #d864b2 100%);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 2px, 100% 2px;
+  font-weight: 500;
+  transition: background-size 1s;
+}
+
+#view-cv:hover {
+  background-size: 100% 2px, 100% 2px;
+}
+  #view-cv::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    width: 0;
+    height: 2px;
+    transition: width 2s;
+  }
+  
+  #view-cv:hover::after {
+    width: 75%;
+  }
+
+
+.description img{
+    transform: translate(30%, 17%);
+    height: 1.1rem;
+}
+
+.bouton-talk-wrapper{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+
+
+
+/* .bouton-talk::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(90deg, #7F7FD5 -4.53%, #86A8E7 51.58%, #78CAC4 98.25%);
+    border-radius: 75px;
+    opacity: .5;
+  } */
+
+  /* .bouton-talk::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 150%;
+    height: 150%;
+    background: linear-gradient(180deg, #7F7FD5 6.21%, #86A8E7 52.07%, #78CAC4 92.53%);
+    filter: blur(60px);
+  } */
+
+
+
+
+.bouton-talk img{
+    height: .6rem ;
+    margin-left: 5px;
+}
+
+.bouton-talk:hover{
+    cursor: pointer;
+}
+
+
+
+/* pour les bouton 3d */
+
+.bouton-talk{
+    height: 3vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    /* padding: 1rem 1rem; */
+    background: #FFFFFF;
+    font-size: .5rem;
+    border-radius: 75px;
+    border: none;
+    background: transparent;
+    white-space: nowrap;
+    transform-style: preserve-3d;
+    }
+
+
+
+.bouton-talk  span {
+    color: rgb(0, 0, 0);
+    background: linear-gradient(60deg, rgba(127, 127, 213, 0.5), rgba(134, 168, 231, 0.5), rgba(145, 234, 228, 0.5));
+    padding: .4rem .9rem;
+    will-change: transform, filter;
+    border: 2px solid rgba(53, 53, 240, 0.2) ;
+    transition: all 0.1s ease-out;
+    border-radius: 100px;
+    overflow: hidden;
+    transform: rotateX(0deg) rotateY(0deg) scale(1);
+    font-weight: 500;
+    perspective-origin: 0 0;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 1000px) {
+
+    .description p #view-cv{
+        text-decoration: underline;
+    }
+
+
+    #view-cv:hover {
+        background-size: 0% 2px, 0% 2px;
+      }
+
+
+      .description {
+
+        line-height: 5vh;
+
+      }
+
+
+}
