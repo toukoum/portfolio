@@ -71,13 +71,18 @@ html, body{
     font-family: 'Poppins', sans-serif ;
   }
 
-  .link-grid > a{
+  .link-grid > div > a{
     font-size: 1rem;
     text-decoration: none;
     color: black;
     font-weight: 500;
     padding-left: 20%;
     align-self: center;
+    transition: transform 0.5s ease-out, opacity .2s ease-out;
+    transform: translate(var(--tx, 0), var(--ty, 0));
+    position: relative;
+    display: inline-block;
+
   }
 
   .link-grid > p{
@@ -96,6 +101,16 @@ html, body{
   #study{
     grid-row: 2;
   }
+
+.button-gravity{
+      transition: transform 0.5s ease-out, opacity .2s ease-out;
+      transform: translate(var(--tx, 0), var(--ty, 0));
+      position: relative;
+}
+
+.link-grid > div{
+  padding: 5px 5px;
+}
 
 
   @media (max-width: 1000px) {

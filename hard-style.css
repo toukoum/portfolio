@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.section1{
+        height: 100vh;
+        background-color: rebeccapurple;
+        width: 100vw;
+}
+
+.section2{
+        height: 100vh;
+        width: 200vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        /* background-color: aquamarine; */
+
+}
+
+.section3{
+        height: 100vh;
+        background-color: rgb(88, 33, 64);
+        width: 100vw;
+}
+
+
+
+
+.line-skill-1{
+        transform: translateY(6rem);
+        
+}
+.line-skill{
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 500;
+        font-size: 8rem;
+        line-height: 12rem;
+        white-space: nowrap;
+        color: black;
+
+        text-align: center;
+
+        animation: flow 10s ease-in-out infinite;
+        background: linear-gradient(90deg, #000000, #282828); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+        background-size: 300%;
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; 
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+
+}
+
+@keyframes flow {
+0%{
+        background-position: 0 50%;
+}
+50%{
+        background-position: 100% 50%;
+}
+100%{
+        background-position: 0 50%;
+}
+
+}
+
+
+.clc-hard-title-wrapper{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+}
+
+
+
+/* ancien style */
+
+    
+      .hard-wrapper{
+        margin-top: 100px;
+        width: 80%;
+        display: flex;
+        justify-content: end;
+      }
+    
+      .hard-content{
+        position: relative;
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr) ;
+      }
+    

@@ -1,0 +1,265 @@
+
+
+
+
+body {
+  overflow-x: hidden;
+}
+
+.section-work-wrapper{
+  font-size: calc(.75rem + 1.5vw);
+  /* height:600vh; */
+  display: flex;
+  align-items: start;
+
+
+}
+
+.demoWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  margin: 5rem 0px 12rem 0px;
+  width: 40%;
+  font-family: Arial, Helvetica, Verdana;
+}
+
+.box {
+  perspective: 550px;
+  /* perspective-origin: 150% 150%; */
+  transform-style: preserve-3d;
+  position: relative;
+  width: 180px;
+  height: 180px;
+  z-index: 1;
+  display: inline-block;
+  margin: 10px 20px 20px 200px; 
+  display: inline-block;
+
+}
+
+.background-card{
+  position: absolute;
+  height: 11.8rem;
+  width: 8.1rem;
+  /* background-color: rgb(57, 45, 57); */
+  border-radius:1.1rem;
+  bottom: 0px;
+  transform: translate3d(-0.45rem, 2.4rem, -0.01rem);
+
+  
+  /* opacity: .5; */
+}
+
+#bg-work{
+  background: linear-gradient(180deg, #5A1B91 35.40%, #14082C 100%);
+  box-shadow: 0px -15px 76px 24px #190C33 inset;
+}
+
+#bg-easy{
+  background: linear-gradient(180deg, #9ABEF1 0%, #9E5347 79.41%);
+  box-shadow:  0px -17px 140px -8px #340B04 inset;
+  }
+
+#bg-youbot{
+  background: linear-gradient(0deg, #29620E 0%, #4BC264 69.61%);
+  box-shadow: 0px 3px 74px 22px #235613 inset;
+}
+
+#bg-raphai{
+  background: linear-gradient(180deg, #2A2B33 57.64%, #3E405E 100%);
+  box-shadow: 0px -90px 144px -19px rgba(6, 14, 29, 0.89) inset;
+}
+
+#bg-logo{
+  background: linear-gradient(180deg, #F98EF7 0%, #A216A0 100%);
+  box-shadow: 0px -15px 74px 22px #6C0A6B inset;
+}
+
+
+
+.card-img{
+  height: 14rem;
+  position: absolute;
+  bottom: 0px;
+  transform: translate(-15%, 30%);
+  z-index: 1;
+}
+
+
+
+
+#cursor-container img {
+  display: block;
+  top: 0;
+  left: 0;
+  height: 2rem ;
+  pointer-events: none;
+}
+
+#cursor-container{
+  z-index: 100;
+}
+
+
+.wrapperCursor{
+  height:15rem;
+  width: 10rem;
+  position: absolute;
+  bottom: 10rem;
+  z-index: 10;
+  transition: all .5s ease-out;
+}
+
+#wrapperCursor-left{
+  left: 0px;
+}
+
+
+#wrapperCursor-right{
+  right: 0px;
+}
+
+
+
+.shadow{
+  border-radius: 25rem;
+  background: rgba(0, 0, 0, 0.5);
+  filter: blur(45px);
+  width: 25rem;
+  height: 1.3rem;
+  flex-shrink: 0;
+  position: absolute;
+  bottom: 7rem;
+
+
+}
+
+.arrow{
+  position: absolute;
+  bottom: 14.8rem;
+}
+
+#arrow-right{
+  right: 5rem;
+}
+
+#arrow-left{
+  left: 5rem;
+}
+
+.arrow>img{
+  height: 3rem;
+}
+
+
+
+
+
+/* ========================
+style text inside box
+======================== */
+
+
+#see-youtube{
+  color: #267336;
+  font-family: Poppins;
+  font-size: .4rem;
+  font-style: normal;
+  font-weight: 500;
+  text-decoration-line: underline;
+  position: absolute;
+  white-space: nowrap;
+  bottom: -1.3rem;
+  left: 1.9rem;
+  transform: translateZ(20px);
+}
+
+#see-youtube> img{
+  height: .6rem ;
+  transform: translateY(0.15rem);
+}
+
+
+
+
+#try-it{
+  color: #8EA9C0;
+  font-family: Poppins;
+  font-size: .4rem;
+  font-style: normal;
+  font-weight: 500;
+  text-decoration-line: underline;
+  position: absolute;
+  white-space: nowrap;
+  bottom: -1.5rem;
+  left: 2.2rem;
+  transform: translateZ(20px);
+}
+
+#try-it> img{
+  height: .6rem ;
+  transform: translateY(0.15rem);
+}
+
+
+#mail-raf{
+  color: #3E0F8C;
+  font-family: Poppins;
+  font-size: .4rem;
+  font-style: normal;
+  font-weight: 500;
+  position: absolute;
+  text-decoration: none;
+  white-space: nowrap;
+  bottom: -1.1rem;
+  left: 0.7rem;
+  transform: translateZ(20px);
+}
+
+
+
+
+
+.title-card{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  position: absolute;
+  bottom: 2.8rem;
+  left: 0.4em;
+  font-size: 1rem;
+  /* transform: translate3d(-0.2rem, -0.9rem, 1rem); */
+  transform: translate3d(0px, 0px, 20px);
+
+}
+
+#title-card-logo{
+  color: #F826F7;
+}
+
+#title-card-youbot{
+  color: #267336;
+}
+
+#title-card-raphai{
+  color: #8EA9C0;
+}
+
+#title-card-easy{
+  color: #FFC9C9;
+}
+
+#title-card-work{
+  color: #D6BDFF;
+  font-size: .8rem;
+  bottom: 2.87rem;
+  left: 0.3rem;
+  white-space: nowrap;
+  transform: translate3d(0px, 0px, 1rem);
+}

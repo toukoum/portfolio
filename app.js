@@ -1,4 +1,9 @@
+
 document.addEventListener('DOMContentLoaded', function() {
+  
+
+
+
   // const listlink = document.querySelectorAll('.link-header')
     const listItems = document.querySelectorAll('.list');
     listItems[0].classList.add('active-li');
@@ -18,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // pour les seuil de section du site web
     const element = document.querySelector('.description'); 
-    const element2 = document.querySelector('.logo-bde'); 
+    const element2 = document.querySelector('.work-section'); 
     const element3 = document.querySelector('#section3'); 
-    const element4 = document.querySelector('.hard-content'); 
+    const element4 = document.querySelector('#contact-section-limit'); 
 
 
     window.addEventListener('scroll', () => {
@@ -107,61 +112,30 @@ document.addEventListener('DOMContentLoaded', function() {
           if (!isScrolling) {
             isScrolling = true;
             footerElement.scrollIntoView();
-            window.scrollBy(0, -800);
+            window.scrollBy(0, 0);
             
             setTimeout(() => {
               isScrolling = false;
             }, 100);
           }
-        } else if (scrollTop === 0 && !isScrolling) {
-          isScrolling = true;
-          document.documentElement.style.scrollBehavior = 'auto';
-          // Ou pour le <body>
-          document.body.style.scrollBehavior = 'auto';
+        // } else if (scrollTop === 0 && !isScrolling) {
+        //   isScrolling = true;
+        //   document.documentElement.style.scrollBehavior = 'auto';
+        //   // Ou pour le <body>
+        //   document.body.style.scrollBehavior = 'auto';
           
-          headerElement.scrollIntoView();
-          window.scrollBy(0, 50);
+        //   headerElement.scrollIntoView();
+        //   window.scrollBy(0, -50);
           
-          setTimeout(() => {
-            isScrolling = false;
-          }, 100);
+        //   setTimeout(() => {
+        //     isScrolling = false;
+        //   }, 100);
         }
       }
         
       
       // Événement de scroll pour détecter la position de défilement
       window.addEventListener('scroll', detectScrollPosition);
-
-
-
-
-
-      // pour les images qui peuvent s'agrandir
-
-      const images = document.querySelectorAll('.zoomable-image');
-
-    images.forEach(image => {
-      image.addEventListener('click', () => {
-        // Créer l'élément de l'image agrandie
-        const zoomedImg = document.createElement('div');
-        zoomedImg.classList.add('zoomed-image');
-
-        // Créer l'élément de l'image agrandie à l'intérieur
-        const zoomedImgContent = document.createElement('img');
-        zoomedImgContent.src = image.src;
-        zoomedImgContent.alt = image.alt;
-
-        // Ajouter l'image agrandie à la page
-        zoomedImg.appendChild(zoomedImgContent);
-        document.body.appendChild(zoomedImg);
-
-        // Supprimer l'image agrandie lorsqu'elle est cliquée
-        zoomedImg.addEventListener('click', () => {
-          zoomedImg.remove();
-        });
-      });
-    });
-
 
 
 
@@ -225,11 +199,11 @@ let calculateAngle = function(e, item, parent) {
   }
 
   // Reapply this to the shadow, with different dividers
-  let calcShadowX = (x - halfWidth) / 3;
-  let calcShadowY = (y - halfHeight) / 3;
+  let calcShadowX = (x - halfWidth) / 2;
+  let calcShadowY = (y - halfHeight) / 2;
   
   // Add a filter shadow - this is more performant to animate than a regular box shadow.
-  item.style.filter = `drop-shadow(${-calcShadowX}px ${calcShadowY}px 10px ${dropShadowColor})`;
+  item.style.filter = `drop-shadow(${-calcShadowX}px ${calcShadowY}px 20px ${dropShadowColor})`;
 }
 
 let calculateAngleLite = function(e, item, parent) {
@@ -354,111 +328,57 @@ document.querySelectorAll('.button-3d').forEach(function(item) {
   // =================================================
 
 
-//   // Importe les fonctions nécessaires de la bibliothèque GreenSock
-// const { gsap, ScrollTrigger } = window;
+// text des section qui apparaît de façon stylé
 
-// // Désactive le comportement par défaut de ScrollTrigger
-// gsap.registerPlugin(ScrollTrigger);
+let reveal = document.querySelectorAll(".title-section");
 
-// // Sélectionne les éléments que tu souhaites animer
-// const section1 = document.querySelector('#section1');
-// const section2 = document.querySelector('#section2');
+reveal.forEach((el) => {
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: el,
+			start: "top 100%", 
+      toggleActions: "play none none reverse",
+    },
+  });
 
-// // Crée l'animation pour la première section
-// const section1Animation = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: section1,
-//     start: 'center center',
-//     end: 'center top',
-//     toggleActions: 'play none none reset',
-//   },
-// });
-
-// section1Animation.to(section1, {
-//   position: 'fixed',
-//   top: '50%',
-//   left: '50%',
-//   transform: 'translate(-50%, -50%)',
-// });
-
-
-
-
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.to("#title-wtf", {
-  scrollTrigger: {
-    pin:"#title-wtf",
-    trigger: "#section1",
-    pinSpacing: false,
-    start: "center center", // Démarre l'animation lorsque l'élément est à 80% de la vue du navigateur
-    end: "bottom 280", // Termine l'animation lorsque l'élément est à 20% de la vue du navigateur
-    toggleClass: "active", // Ajoute la classe "active" lorsque l'animation est déclenchée
-    markers: false // Affiche les marqueurs de déclenchement pour le débogage
-  }
+  timeline.from(el, {
+    y: 250,
+    opacity:.3,
+    ease: "power4.out",
+    delay:.5,
+    skewY: 15,  
+    duration:1.5,
+    stagger: {
+      amount: 0.5,
+    },
+  });
 });
 
-gsap.to("#section1", {
-  scrollTrigger: {
-    background:"red",
 
-    pin:true,
-    trigger: "#section1",
-    start: "center center", // Démarre l'animation lorsque l'élément est à 80% de la vue du navigateur
-    end: "bottom 280", // Termine l'animation lorsque l'élément est à 20% de la vue du navigateur
-    toggleClass: "active", // Ajoute la classe "active" lorsque l'animation est déclenchée
-    markers: false // Affiche les marqueurs de déclenchement pour le débogage
-  }
-  
-});
+
+
 
 
 
 // animation section skill line
 
-gsap.to('.text-skill', {
-  duration:4,
-  scrollTrigger: {
-    trigger: ".text-skill", 
-    start: "top 80%",
-    end: "+=1000 top ",
-    scrub : 3,
-    toggleClass:"active-skill",
-    },
+var textSkills = document.querySelectorAll('.text-skill');
+
+textSkills.forEach((textSkill) => {
+  gsap.to(textSkill, {
+    duration:4,
+    scrollTrigger: {
+      trigger: textSkill, 
+      start: "top 70%",
+      scrub : 1,
+      // markers:true,
+      toggleClass:"active-skill",
+      },
+  })
+  
+
 })
 
-gsap.to('.text-skill2', {
-  duration:4,
-  scrollTrigger: {
-    trigger: ".text-skill2", 
-    start: "top 80%",
-    end: "+=1000 top ",
-    scrub : 3,
-    toggleClass:"active-skill",
-    markers: false,},
-})
-
-gsap.to('.text-skill3', {
-  duration:4,
-  scrollTrigger: {
-    trigger: ".text-skill3", 
-    start: "top 80%",
-    end: "+=1000 top ",
-    scrub : 3,
-    toggleClass:"active-skill",
-    markers: false,},
-})
-
-gsap.to('.text-skill4', {
-  duration:4,
-  scrollTrigger: {
-    trigger: ".text-skill4", 
-    start: "top 80%",
-    end: "+=1000 top ",
-    scrub : 3,
-    toggleClass:"active-skill",
-    markers: false},
-})
 
 
 
@@ -471,4 +391,17 @@ gsap.to('progress', {
 });
 
 
+
+
+
+
 })
+
+
+
+
+
+
+
+
+

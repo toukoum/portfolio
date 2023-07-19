@@ -18,7 +18,7 @@
   }
   header{
     
-    z-index: 3;
+    z-index: 9;
     position: fixed;
     display: grid;
     grid-template-columns: repeat(13, 1fr);
@@ -32,8 +32,11 @@
     display: flex;
     font-family: 'Varela Round', sans-serif;
     align-items: end;
-    font-size: 1rem;
-    padding-bottom: 18px;
+    transform: translateY(.7rem);
+  }
+
+  .logo>a>img{
+    height: max(100px, 2.5rem);
   }
 
 .nav-bar{
@@ -63,8 +66,9 @@ nav ul li a {
     background: transparent;
     z-index: 5;
     padding: 12px 0px;
+    transform: translate(var(--tx, 0), var(--ty, 0));    
+    transition: transform 0.5s ease-out, opacity .2s ease-out;
 
-    
 }
 
 nav {
@@ -98,13 +102,14 @@ nav ul li {
     align-items: center;
     justify-content: center;
     background: transparent;
+
     
 }
 
 nav ul li.active-li::before,
 nav ul li:hover::before {
   content:' ';
-  background-color: white;
+  background-color: rgb(251, 251, 251);
   border-radius: 50px;
   height: 100%;
   position: absolute;
@@ -113,13 +118,11 @@ nav ul li:hover::before {
   padding: 0 20px;
 }
 
-
-
-
 nav ul li.active-li a,
 nav ul li:hover a{
     color: black;
   }
+
 
 
 
