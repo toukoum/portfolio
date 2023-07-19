@@ -16,6 +16,12 @@
     width: 100%;
     font-size: calc(.75rem + 1.5vw)
   }
+
+
+  .wrapper-body{
+    overflow-y: hidden;
+  }
+  
   header{
     
     z-index: 9;
