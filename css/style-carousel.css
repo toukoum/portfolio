@@ -62,7 +62,7 @@ body {
 }
 
 #bg-easy{
-  background: linear-gradient(180deg, #9ABEF1 0%, #9E5347 79.41%);
+  background: linear-gradient(180deg, #9ABEF1 0%, #fbff00 40.41%);
   box-shadow:  0px -17px 140px -8px #340B04 inset;
   }
 
@@ -252,8 +252,29 @@ style text inside box
 }
 
 #title-card-easy{
-  color: #FFC9C9;
+  color: #010101;
 }
+
+#try-it-rrate{
+	color: black;
+	z-index: 100;
+  font-family: Poppins;
+  font-size: .4rem;
+  font-style: normal;
+  font-weight: 500;
+  text-decoration-line: underline;
+  position: absolute;
+  white-space: nowrap;
+  bottom: -1.5rem;
+  left: 2.2rem;
+  transform: translateZ(20px);
+}
+
+#try-it-rrate > img{
+  height: .6rem ;
+  transform: translateY(0.15rem);
+}
+
 
 #title-card-work{
   color: #D6BDFF;
@@ -262,4 +283,18 @@ style text inside box
   left: 0.3rem;
   white-space: nowrap;
   transform: translate3d(0px, 0px, 1rem);
+}
+
+
+#inprogress{
+	z-index: 100;
+	color: #ff00006f;
+	font-size: 1.2rem;
+	font-weight: 800;
+	text-wrap: nowrap;
+	position: relative;
+	top: 50%;
+	left: 20%;
+	transform: translate3d(-50%, -50%, 20px);
+	rotate: 60deg;
 }
