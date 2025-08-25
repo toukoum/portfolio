@@ -17,8 +17,11 @@ import {
 } from '@/components/ui/chat/chat-bubble';
 import WelcomeModal from '@/components/welcome-modal';
 import { Info } from 'lucide-react';
-import { GithubButton } from '../ui/github-button';
 import HelperBoost from './HelperBoost';
+import { FastfolioCTA } from '@/components/fastfolio-cta';
+import { FastfolioPopup } from '@/components/fastfolio-popup';
+import { PoweredByFastfolio } from '@/components/powered-by-fastfolio';
+import { FastfolioTracking } from '@/lib/fastfolio-tracking';
 
 // ClientOnly component for client-side rendering
 //@ts-ignore
@@ -124,6 +127,7 @@ const Chat = () => {
   const [autoSubmitted, setAutoSubmitted] = useState(false);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [isTalking, setIsTalking] = useState(false);
+  const [showFastfolioPopup, setShowFastfolioPopup] = useState(false);
 
   const {
     messages,
@@ -146,6 +150,15 @@ const Chat = () => {
           videoRef.current.play().catch((error) => {
             console.error('Failed to play video:', error);
           });
+        }
+        
+        // Track message count and show popup if needed
+        const messageCount = FastfolioTracking.incrementMessageCount();
+        if (FastfolioTracking.shouldShowPopup()) {
+          setTimeout(() => {
+            setShowFastfolioPopup(true);
+            FastfolioTracking.markPopupShown();
+          }, 2000); // Show popup after 2 seconds of receiving response
         }
       }
     },
@@ -276,6 +289,8 @@ const Chat = () => {
 
   return (
     <div className="relative h-screen overflow-hidden">
+      <FastfolioCTA />
+      <FastfolioPopup open={showFastfolioPopup} onOpenChange={setShowFastfolioPopup} />
       <div className="absolute top-6 right-8 z-51 flex flex-col-reverse items-center justify-center gap-1 md:flex-row">
         <WelcomeModal
           trigger={
@@ -284,14 +299,6 @@ const Chat = () => {
             </div>
           }
         />
-        <div className="">
-          <GithubButton
-            animationDuration={1.5}
-            label="Star"
-            size={'sm'}
-            repoUrl="https://github.com/toukoum/portfolio"
-          />
-        </div>
       </div>
 
       {/* Fixed Avatar Header with Gradient */}
@@ -391,15 +398,8 @@ const Chat = () => {
               isToolInProgress={isToolInProgress}
             />
           </div>
+          <PoweredByFastfolio />
         </div>
-        <a
-          href="https://x.com/toukoumcode"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed right-3 bottom-0 z-10 mb-4 hidden cursor-pointer items-center gap-2 rounded-xl px-4 py-2 text-sm hover:underline md:block"
-        >
-          @toukoum
-        </a>
       </div>
     </div>
   );
