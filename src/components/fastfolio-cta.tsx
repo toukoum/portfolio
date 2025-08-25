@@ -22,7 +22,7 @@ export function FastfolioCTA() {
     window.open('https://fastfol.io?utm_source=toukoum_portfolio&utm_medium=floating_cta&utm_campaign=portfolio_conversion', '_blank');
   };
 
-  const position = 'fixed top-8 left-6 z-[60]';
+  const position = 'fixed top-8 left-6 z-51';
 
   return (
     <motion.button

@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,10 +8,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { BarChart3, Globe, MessageSquare, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import { CheckCircle2, Sparkles, Globe, BarChart3 } from 'lucide-react';
 
 interface FastfolioPopupProps {
   open: boolean;
@@ -19,20 +18,23 @@ interface FastfolioPopupProps {
 
 export function FastfolioPopup({ open, onOpenChange }: FastfolioPopupProps) {
   const handleCTA = () => {
-    window.open('https://fastfol.io?utm_source=toukoum_portfolio&utm_medium=popup&utm_campaign=portfolio_conversion', '_blank');
+    window.open(
+      'https://fastfol.io?utm_source=toukoum_portfolio&utm_medium=popup&utm_campaign=portfolio_conversion',
+      '_blank'
+    );
     onOpenChange(false);
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden border-none">
+      <DialogContent className="overflow-hidden border-none p-0 sm:max-w-[500px]">
         <div className="relative">
-          <Image 
-            src="/portfolio-preview.png" 
-            alt="Fastfolio Preview" 
+          <Image
+            src="/portfolio-preview.png"
+            alt="Fastfolio Preview"
             width={500}
             height={250}
-            className="w-full h-[200px] object-cover"
+            className="h-[200px] w-full object-cover"
           />
           {/*<Badge 
             className="absolute top-4 right-4 bg-white/90 text-gray-900 backdrop-blur-sm"
@@ -41,49 +43,62 @@ export function FastfolioPopup({ open, onOpenChange }: FastfolioPopupProps) {
             Join 500+ developers
           </Badge>*/}
         </div>
-        
-        <div className="p-6 space-y-8">
+
+        <div className="space-y-8 p-6">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">
-              Impressed? Build Your Own <br /> AI Portfolio in 5 Minutes
+              Build Your Own <span className="text-[#4c55fa]">AI Portfolio</span> <br /> in 5 Minutes
             </DialogTitle>
             <DialogDescription className="text-muted-foreground">
-              Stand out get more clients
+              Find your Jobs - More clients - Better Opportunities
             </DialogDescription>
           </DialogHeader>
 
-          <div className="space-y-3">
+          <div className="space-y-6">
             <div className="flex items-start gap-3">
-              <Sparkles className="w-5 h-5 text-[#4c55fa] mt-0.5" />
+              <MessageSquare className="mt-0.5 h-5 w-5 text-[#4c55fa]" />
               <div>
-                <p className="font-medium text-sm">GPT-4o powered conversations</p>
-                <p className="text-xs text-muted-foreground">Engage visitors with intelligent AI responses</p>
+                <p className="text-sm font-medium">
+                  Answers 24/7 in your voice
+                </p>
               </div>
             </div>
-            
+
             <div className="flex items-start gap-3">
-              <Globe className="w-5 h-5 text-[#4c55fa] mt-0.5" />
+              <Sparkles className="mt-0.5 h-5 w-5 text-[#4c55fa]" />
               <div>
-                <p className="font-medium text-sm">Custom domain support</p>
-                <p className="text-xs text-muted-foreground">Your portfolio, your brand</p>
+                <p className="text-sm font-medium">
+                  GPT-5 powered conversations
+                </p>
+                {/*<p className="text-xs text-muted-foreground">Engage visitors with intelligent AI responses</p>*/}
               </div>
             </div>
-            
+
             <div className="flex items-start gap-3">
-              <BarChart3 className="w-5 h-5 text-[#4c55fa] mt-0.5" />
+              <Globe className="mt-0.5 h-5 w-5 text-[#4c55fa]" />
               <div>
-                <p className="font-medium text-sm">Advanced analytics & insights</p>
-                <p className="text-xs text-muted-foreground">Track visitor engagement and conversions</p>
+                <p className="text-sm font-medium">Custom domain support</p>
+                {/*<p className="text-xs text-muted-foreground">Your portfolio, your brand</p>*/}
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3">
+              <BarChart3 className="mt-0.5 h-5 w-5 text-[#4c55fa]" />
+              <div>
+                <p className="text-sm font-medium">
+                  Advanced analytics & insights
+                </p>
+                {/*<p className="text-xs text-muted-foreground">Track visitor engagement and conversions</p>*/}
               </div>
             </div>
           </div>
 
           <div className="flex gap-3 pt-2">
-            <Button 
+            <Button
               onClick={handleCTA}
-              className="flex-1 bg-[#4c55fa] hover:bg-[#4c55fa]/80 cursor-pointer"
+              className="flex-1 cursor-pointer border-none bg-[#4c55fa] hover:bg-[#4c55fa]/80"
             >
-              Start Building for Free →
+              Create Your Portfolio for Free
             </Button>
           </div>
         </div>
