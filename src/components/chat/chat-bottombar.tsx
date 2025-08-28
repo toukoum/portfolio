@@ -4,7 +4,8 @@
 import { ChatRequestOptions } from 'ai';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUp } from 'lucide-react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { FastfolioTracking } from '@/lib/fastfolio-tracking';
 
 interface ChatBottombarProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -16,6 +17,7 @@ interface ChatBottombarProps {
   stop: () => void;
   input: string;
   isToolInProgress: boolean;
+  disabled?: boolean;
 }
 
 export default function ChatBottombar({
@@ -25,8 +27,15 @@ export default function ChatBottombar({
   isLoading,
   stop,
   isToolInProgress,
+  disabled = false,
 }: ChatBottombarProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const [remainingMessages, setRemainingMessages] = useState(0);
+  
+  useEffect(() => {
+    // Update remaining messages count
+    setRemainingMessages(FastfolioTracking.getRemainingMessages());
+  }, [input]); // Update when input changes (user is typing)
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (
@@ -61,15 +70,17 @@ export default function ChatBottombar({
             onChange={handleInputChange}
             onKeyDown={handleKeyPress}
             placeholder={
-              isToolInProgress ? 'Tool is in progress...' : 'Ask me anything'
+              disabled ? '' : isToolInProgress ? 'Tool is in progress...' : 'Ask me anything'
             }
-            className="text-md w-full border-none bg-transparent text-black placeholder:text-gray-500 focus:outline-none"
-            disabled={isToolInProgress || isLoading}
+            className={`text-md w-full border-none bg-transparent placeholder:text-gray-500 focus:outline-none ${
+              disabled ? 'text-red-600 font-medium' : 'text-black'
+            }`}
+            disabled={isToolInProgress || isLoading || disabled}
           />
 
           <button
             type="submit"
-            disabled={isLoading || !input.trim() || isToolInProgress}
+            disabled={isLoading || !input.trim() || isToolInProgress || disabled}
             className="flex items-center justify-center rounded-full bg-[#0171E3] p-2 text-white disabled:opacity-50"
             onClick={(e) => {
               if (isLoading) {

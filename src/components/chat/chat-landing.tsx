@@ -6,9 +6,10 @@ import React from 'react';
 
 interface ChatLandingProps {
   submitQuery: (query: string) => void;
+  hasReachedLimit?: boolean;
 }
 
-const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery }) => {
+const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery, hasReachedLimit = false }) => {
   // Suggested questions that the user can click on
   const suggestedQuestions = [
     {
@@ -77,11 +78,16 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery }) => {
         {suggestedQuestions.map((question, index) => (
           <motion.button
             key={index}
-            className="bg-accent hover:bg-accent/80 flex w-full items-center rounded-lg px-4 py-3 transition-colors"
-            onClick={() => submitQuery(question.text)}
+            className={`flex w-full items-center rounded-lg px-4 py-3 transition-colors ${
+              hasReachedLimit 
+                ? 'bg-gray-100 cursor-not-allowed opacity-50' 
+                : 'bg-accent hover:bg-accent/80'
+            }`}
+            onClick={() => !hasReachedLimit && submitQuery(question.text)}
             variants={itemVariants}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={!hasReachedLimit ? { scale: 1.02 } : {}}
+            whileTap={!hasReachedLimit ? { scale: 0.98 } : {}}
+            disabled={hasReachedLimit}
           >
             <span className="bg-background mr-3 rounded-full p-2">
               {question.icon}

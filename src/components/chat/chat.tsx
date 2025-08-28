@@ -128,6 +128,8 @@ const Chat = () => {
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [isTalking, setIsTalking] = useState(false);
   const [showFastfolioPopup, setShowFastfolioPopup] = useState(false);
+  const [hasReachedLimit, setHasReachedLimit] = useState(false);
+  const [, forceUpdate] = useState({});
 
   const {
     messages,
@@ -152,13 +154,15 @@ const Chat = () => {
           });
         }
         
-        // Track message count and show popup if needed
-        const messageCount = FastfolioTracking.incrementMessageCount();
+        // Don't increment here since we already increment on submit
+        // Just check if we should show popup
         if (FastfolioTracking.shouldShowPopup()) {
           setTimeout(() => {
             setShowFastfolioPopup(true);
-            FastfolioTracking.markPopupShown();
-          }, 2000); // Show popup after 2 seconds of receiving response
+            if (!FastfolioTracking.hasReachedLimit()) {
+              FastfolioTracking.markPopupShown();
+            }
+          }, 2000);
         }
       }
     },
@@ -228,7 +232,27 @@ const Chat = () => {
 
   //@ts-ignore
   const submitQuery = (query) => {
+    // Check rate limit before submitting
+    if (FastfolioTracking.hasReachedLimit()) {
+      setHasReachedLimit(true);
+      setShowFastfolioPopup(true);
+      return;
+    }
+    
     if (!query.trim() || isToolInProgress) return;
+    
+    // Increment message count
+    FastfolioTracking.incrementMessageCount();
+    
+    // Force re-render to update remaining messages counter
+    forceUpdate({});
+    
+    // Check if limit reached after increment
+    if (FastfolioTracking.hasReachedLimit()) {
+      setHasReachedLimit(true);
+      setShowFastfolioPopup(true);
+    }
+    
     setLoadingSubmit(true);
     append({
       role: 'user',
@@ -244,6 +268,12 @@ const Chat = () => {
       videoRef.current.pause();
     }
 
+    // Check rate limit on mount
+    if (FastfolioTracking.hasReachedLimit()) {
+      setHasReachedLimit(true);
+      setShowFastfolioPopup(true);
+    }
+    
     if (initialQuery && !autoSubmitted) {
       setAutoSubmitted(true);
       setInput('');
@@ -266,6 +296,14 @@ const Chat = () => {
   //@ts-ignore
   const onSubmit = (e) => {
     e.preventDefault();
+    
+    // Check rate limit
+    if (FastfolioTracking.hasReachedLimit()) {
+      setHasReachedLimit(true);
+      setShowFastfolioPopup(true);
+      return;
+    }
+    
     if (!input.trim() || isToolInProgress) return;
     submitQuery(input);
     setInput('');
@@ -290,7 +328,7 @@ const Chat = () => {
   return (
     <div className="relative h-screen overflow-hidden">
       <FastfolioCTA />
-      <FastfolioPopup open={showFastfolioPopup} onOpenChange={setShowFastfolioPopup} />
+      <FastfolioPopup open={showFastfolioPopup} onOpenChange={setShowFastfolioPopup} hasReachedLimit={hasReachedLimit} />
       <div className="absolute top-6 right-8 z-51 flex flex-col-reverse items-center justify-center gap-1 md:flex-row">
         <WelcomeModal
           trigger={
@@ -358,7 +396,7 @@ const Chat = () => {
                 className="flex min-h-full items-center justify-center"
                 {...MOTION_CONFIG}
               >
-                <ChatLanding submitQuery={submitQuery} />
+                <ChatLanding submitQuery={submitQuery} hasReachedLimit={hasReachedLimit} />
               </motion.div>
             ) : currentAIMessage ? (
               <div className="pb-4">
@@ -388,14 +426,15 @@ const Chat = () => {
         {/* Fixed Bottom Bar */}
         <div className="sticky bottom-0 bg-white px-2 pt-3 md:px-0 md:pb-4">
           <div className="relative flex flex-col items-center gap-3">
-            <HelperBoost submitQuery={submitQuery} setInput={setInput} />
+            <HelperBoost submitQuery={submitQuery} setInput={setInput} hasReachedLimit={hasReachedLimit} />
             <ChatBottombar
-              input={input}
-              handleInputChange={handleInputChange}
+              input={hasReachedLimit ? "You've reached your message limit. Create your own Fastfolio to continue chatting!" : input}
+              handleInputChange={hasReachedLimit ? () => {} : handleInputChange}
               handleSubmit={onSubmit}
               isLoading={isLoading}
               stop={handleStop}
-              isToolInProgress={isToolInProgress}
+              isToolInProgress={isToolInProgress || hasReachedLimit}
+              disabled={hasReachedLimit}
             />
           </div>
           <PoweredByFastfolio />

@@ -10,13 +10,15 @@ import {
 } from '@/components/ui/dialog';
 import { BarChart3, Globe, MessageSquare, Sparkles } from 'lucide-react';
 import Image from 'next/image';
+import { PoweredByFastfolio } from './powered-by-fastfolio';
 
 interface FastfolioPopupProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  hasReachedLimit?: boolean;
 }
 
-export function FastfolioPopup({ open, onOpenChange }: FastfolioPopupProps) {
+export function FastfolioPopup({ open, onOpenChange, hasReachedLimit = false }: FastfolioPopupProps) {
   const handleCTA = () => {
     window.open(
       'https://fastfol.io?utm_source=toukoum_portfolio&utm_medium=popup&utm_campaign=portfolio_conversion',
@@ -47,11 +49,19 @@ export function FastfolioPopup({ open, onOpenChange }: FastfolioPopupProps) {
         <div className="space-y-8 p-6">
           <DialogHeader>
             <DialogTitle className="text-2xl font-bold">
-              Build Your Own <span className="text-[#4c55fa]">AI Portfolio</span> <br /> in 5 Minutes
+              {hasReachedLimit ? (
+                <>You've reached your message limit</>
+              ) : (
+                <>Build Your Own <span className="text-[#4c55fa]">AI Portfolio</span></>
+              )}
             </DialogTitle>
-            <DialogDescription className="text-muted-foreground">
-              Find your Jobs - More clients - Better Opportunities
-            </DialogDescription>
+            {/*<DialogDescription className="text-muted-foreground">
+              {hasReachedLimit ? (
+                <>Create your own Fastfolio to continue chatting!</>
+              ) : (
+                <>Find your Jobs - More clients - Better Opportunities</>
+              )}
+            </DialogDescription>*/}
           </DialogHeader>
 
           <div className="space-y-6">
@@ -98,9 +108,11 @@ export function FastfolioPopup({ open, onOpenChange }: FastfolioPopupProps) {
               onClick={handleCTA}
               className="flex-1 cursor-pointer border-none bg-[#4c55fa] hover:bg-[#4c55fa]/80"
             >
-              Create Your Portfolio for Free
+              Create Your Portfolio
             </Button>
           </div>
+
+          <PoweredByFastfolio />
         </div>
       </DialogContent>
     </Dialog>
