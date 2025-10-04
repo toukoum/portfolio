@@ -428,7 +428,7 @@ const Chat = () => {
           <div className="relative flex flex-col items-center gap-3">
             <HelperBoost submitQuery={submitQuery} setInput={setInput} hasReachedLimit={hasReachedLimit} />
             <ChatBottombar
-              input={hasReachedLimit ? "You've reached your message limit. Create your own Fastfolio to continue chatting!" : input}
+              input={hasReachedLimit ? "You've reached your message limit." : input}
               handleInputChange={hasReachedLimit ? () => {} : handleInputChange}
               handleSubmit={onSubmit}
               isLoading={isLoading}

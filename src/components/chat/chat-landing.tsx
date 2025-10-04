@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, Code, GraduationCap, Mail, MessageSquare } from 'lucide-react';
+import { ArrowUpRight, Award, Code, Mail, MessageSquare } from 'lucide-react';
+import Link from 'next/link';
 import React from 'react';
 
 interface ChatLandingProps {
@@ -9,7 +10,10 @@ interface ChatLandingProps {
   hasReachedLimit?: boolean;
 }
 
-const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery, hasReachedLimit = false }) => {
+const ChatLanding: React.FC<ChatLandingProps> = ({
+  submitQuery,
+  hasReachedLimit = false,
+}) => {
   // Suggested questions that the user can click on
   const suggestedQuestions = [
     {
@@ -60,42 +64,7 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery, hasReachedLimit 
       animate="visible"
       variants={containerVariants}
     >
-      {/* Welcome message */}
-      <motion.div className="mb-8 text-center" variants={itemVariants}>
-        <h2 className="mb-3 text-2xl font-semibold">
-            I'm Raphael's digital twin
-        </h2>
-        <p className="text-muted-foreground mx-auto max-w-md">
-          The first portfolio that fit YOU needs.
-        </p>
-      </motion.div>
-
-      {/* Suggested questions */}
-      <motion.div
-        className="w-full max-w-md space-y-3"
-        variants={containerVariants}
-      >
-        {suggestedQuestions.map((question, index) => (
-          <motion.button
-            key={index}
-            className={`flex w-full items-center rounded-lg px-4 py-3 transition-colors ${
-              hasReachedLimit 
-                ? 'bg-gray-100 cursor-not-allowed opacity-50' 
-                : 'bg-accent hover:bg-accent/80'
-            }`}
-            onClick={() => !hasReachedLimit && submitQuery(question.text)}
-            variants={itemVariants}
-            whileHover={!hasReachedLimit ? { scale: 1.02 } : {}}
-            whileTap={!hasReachedLimit ? { scale: 0.98 } : {}}
-            disabled={hasReachedLimit}
-          >
-            <span className="bg-background mr-3 rounded-full p-2">
-              {question.icon}
-            </span>
-            <span className="text-left">{question.text}</span>
-          </motion.button>
-        ))}
-      </motion.div>
+     
     </motion.div>
   );
 };

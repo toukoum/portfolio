@@ -73,7 +73,7 @@ export default function ChatBottombar({
               disabled ? '' : isToolInProgress ? 'Tool is in progress...' : 'Ask me anything'
             }
             className={`text-md w-full border-none bg-transparent placeholder:text-gray-500 focus:outline-none ${
-              disabled ? 'text-red-600 font-medium' : 'text-black'
+              disabled ? 'text-muted-foreground font-medium' : 'text-black'
             }`}
             disabled={isToolInProgress || isLoading || disabled}
           />
